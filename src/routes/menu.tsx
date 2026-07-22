@@ -20,7 +20,7 @@ function MenuPage() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Floating Nav */}
       <header className="fixed top-4 inset-x-0 z-50 px-4 animate-fade-in">
-        <div className="mx-auto max-w-6xl backdrop-blur-md bg-background/70 border border-border/60 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
+        <div className="mx-auto max-w-6xl backdrop-blur-2xl bg-background/40 border border-border/60 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
           <Link to="/" className="font-display text-xl tracking-tight">
             butter<span className="text-accent">.</span>
           </Link>
@@ -58,30 +58,28 @@ function MenuPage() {
                 {String(sIdx + 1).padStart(2, "0")}
               </span>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 gap-4">
               {section.items.map((it, i) => (
                 <article
                   key={it.name}
-                  className="group rounded-3xl overflow-hidden bg-card border border-border/60 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-500 animate-fade-in"
-                  style={{ animationDelay: `${i * 60}ms` }}
+                  className="group flex items-center gap-4 rounded-2xl overflow-hidden bg-card border border-border/60 p-3 hover:shadow-lg hover:shadow-black/5 hover:-translate-y-0.5 transition-all duration-300 animate-fade-in"
+                  style={{ animationDelay: `${i * 50}ms` }}
                 >
-                  <div className="aspect-[5/4] overflow-hidden">
+                  <div className="w-20 h-20 shrink-0 overflow-hidden rounded-xl">
                     <img
                       src={it.image}
                       alt={it.name}
                       loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3 className="font-display text-xl">{it.name}</h3>
-                      <span className="tabular-nums text-sm font-medium">
-                        {it.price} <span className="text-muted-foreground text-xs">SAR</span>
-                      </span>
-                    </div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display text-lg leading-tight truncate">{it.name}</h3>
+                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed line-clamp-2">{it.desc}</p>
                   </div>
+                  <span className="tabular-nums text-sm font-medium shrink-0 pr-2">
+                    {it.price} <span className="text-muted-foreground text-xs">SAR</span>
+                  </span>
                 </article>
               ))}
             </div>
