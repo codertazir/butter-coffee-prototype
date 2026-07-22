@@ -15,7 +15,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Floating Nav */}
       <header className="fixed top-4 inset-x-0 z-50 px-4 animate-fade-in">
-        <div className="mx-auto max-w-6xl backdrop-blur-2xl bg-background/40 border border-border/60 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
+        <div className="mx-auto max-w-6xl backdrop-blur-3xl backdrop-saturate-150 bg-background/50 supports-[backdrop-filter]:bg-background/30 border border-border/60 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
           <a href="#top" className="font-display text-xl tracking-tight">
             butter<span className="text-accent">.</span>
           </a>
@@ -36,22 +36,22 @@ function Index() {
       </header>
 
       {/* Hero — exact viewport */}
-      <section id="top" className="relative h-svh flex flex-col bg-background">
-        <div className="flex-1 mx-auto w-full max-w-6xl px-6 pt-28 md:pt-32 pb-8 grid md:grid-cols-12 gap-10 items-center">
+      <section id="top" className="relative h-svh min-h-svh overflow-hidden flex flex-col bg-background">
+        <div className="flex-1 min-h-0 mx-auto w-full max-w-6xl px-6 pt-24 md:pt-32 pb-20 md:pb-8 grid md:grid-cols-12 gap-6 md:gap-10 items-center">
           <div className="md:col-span-6 animate-fade-in">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6">
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 md:mb-6">
               Specialty Coffee · Al Jubail
             </p>
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-foreground">
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-foreground">
               Refined<br />
               coffee.<br />
               <em className="italic text-accent">Effortless</em> moments.
             </h1>
-            <p className="mt-8 max-w-md text-muted-foreground leading-relaxed">
+            <p className="mt-5 md:mt-8 max-w-md text-sm md:text-base text-muted-foreground leading-relaxed">
               A neighborhood specialty spot in Al Huwailat. We pour thoughtfully,
               serve warmly, and pair every cup with pastries worth waking up for.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-6 md:mt-10 flex flex-wrap gap-3">
               <Link to="/menu" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 hover:scale-105 transition-all">
                 View Menu
               </Link>
@@ -60,7 +60,7 @@ function Index() {
               </a>
             </div>
           </div>
-          <div className="md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
+          <div className="hidden md:block md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
             <div className="relative aspect-[4/5] max-h-[70vh] mx-auto overflow-hidden rounded-3xl shadow-2xl shadow-black/10">
               <img
                 src={heroImg}
@@ -77,14 +77,15 @@ function Index() {
         <a
           href="#marquee"
           aria-label="Scroll down"
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors"
+          className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 md:gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors z-10"
         >
           <span>Scroll</span>
-          <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="12" height="18" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 1v18M1 13l6 6 6-6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </a>
       </section>
+
 
       {/* Animated marquee bar — outside the hero, uses story bg */}
       <div id="marquee" className="border-y border-border/70 bg-secondary/40 overflow-hidden">
@@ -120,29 +121,46 @@ function Index() {
           </div>
 
           <div className="relative">
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 pb-24">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 pb-24">
               {previewItems.map((it, i) => (
                 <article
                   key={it.name}
-                  className="group rounded-3xl overflow-hidden bg-card border border-border/60 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-500 reveal"
+                  className="group rounded-2xl sm:rounded-3xl overflow-hidden bg-card border border-border/60 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-500 reveal"
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  <div className="aspect-[5/4] overflow-hidden">
-                    <img
-                      src={it.image}
-                      alt={it.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3 className="font-display text-xl">{it.name}</h3>
-                      <span className="tabular-nums text-sm font-medium">
-                        {it.price} <span className="text-muted-foreground text-xs">SAR</span>
-                      </span>
+                  {/* Mobile: horizontal row */}
+                  <div className="flex sm:hidden items-center gap-4 p-3">
+                    <div className="w-20 h-20 shrink-0 overflow-hidden rounded-xl">
+                      <img src={it.image} alt={it.name} loading="lazy" className="w-full h-full object-cover" />
                     </div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-lg leading-tight truncate">{it.name}</h3>
+                      <p className="mt-1 text-xs text-muted-foreground leading-relaxed line-clamp-2">{it.desc}</p>
+                    </div>
+                    <span className="tabular-nums text-sm font-medium shrink-0 pr-1">
+                      {it.price} <span className="text-muted-foreground text-xs">SAR</span>
+                    </span>
+                  </div>
+
+                  {/* Desktop: stacked card */}
+                  <div className="hidden sm:block">
+                    <div className="aspect-[5/4] overflow-hidden">
+                      <img
+                        src={it.image}
+                        alt={it.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <h3 className="font-display text-xl">{it.name}</h3>
+                        <span className="tabular-nums text-sm font-medium">
+                          {it.price} <span className="text-muted-foreground text-xs">SAR</span>
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -150,6 +168,7 @@ function Index() {
 
             {/* Fade overlay — cards fade into bg */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/80 to-background" />
+
           </div>
 
           <div className="-mt-8 flex justify-center reveal relative z-10">
