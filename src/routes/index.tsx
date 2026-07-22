@@ -15,7 +15,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Floating Nav */}
       <header className="fixed top-4 inset-x-0 z-50 px-4 animate-fade-in">
-        <div className="mx-auto max-w-6xl backdrop-blur-3xl backdrop-saturate-150 bg-background/50 supports-[backdrop-filter]:bg-background/30 border border-border/60 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
+        <div className="mx-auto max-w-6xl backdrop-blur-2xl backdrop-saturate-200 bg-background/40 supports-[backdrop-filter]:bg-background/25 border border-white/30 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
           <a href="#top" className="font-display text-xl tracking-tight">
             butter<span className="text-accent">.</span>
           </a>
@@ -60,8 +60,8 @@ function Index() {
               </a>
             </div>
           </div>
-          <div className="hidden md:block md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
-            <div className="relative aspect-[4/5] max-h-[70vh] mx-auto overflow-hidden rounded-3xl shadow-2xl shadow-black/10">
+          <div className="md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
+            <div className="relative aspect-[4/5] max-h-[38vh] md:max-h-[70vh] w-3/5 md:w-full mx-auto overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl shadow-black/10">
               <img
                 src={heroImg}
                 alt="Latte with rosetta art on a marble counter at Butter Coffee"
@@ -324,7 +324,7 @@ function RevealScript() {
                   io.unobserve(entry.target);
                 }
               });
-            }, { threshold: 0.12 });
+            }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
             els.forEach(function(e){ io.observe(e); });
           })();
         `,
