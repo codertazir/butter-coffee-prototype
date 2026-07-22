@@ -1,47 +1,26 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import drinkImg from "@/assets/drink-1.jpg";
 import pastryImg from "@/assets/pastry.jpg";
 import beansImg from "@/assets/beans.jpg";
+import { previewItems } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const menu = {
-  Espresso: [
-    { name: "Espresso", desc: "Single origin, seasonal", price: "10" },
-    { name: "Cortado", desc: "Equal parts espresso & steamed milk", price: "14" },
-    { name: "Flat White", desc: "Velvet microfoam, double shot", price: "17" },
-    { name: "Butter Latte", desc: "House signature, brown butter syrup", price: "22" },
-    { name: "Cappuccino", desc: "Classic Italian, dry foam", price: "16" },
-  ],
-  "Iced & Cold": [
-    { name: "Iced Latte", desc: "Slow-poured over ice", price: "18" },
-    { name: "Cold Brew", desc: "18-hour steeped, smooth finish", price: "17" },
-    { name: "Spanish Latte", desc: "Condensed milk, double espresso", price: "20" },
-    { name: "Iced Butter Cream", desc: "Salted butter cold foam", price: "24" },
-  ],
-  "Filter & More": [
-    { name: "V60 Pour Over", desc: "Ask about today's beans", price: "22" },
-    { name: "Matcha Latte", desc: "Ceremonial grade, whole milk", price: "22" },
-    { name: "Hot Chocolate", desc: "Dark 70%, steamed milk", price: "18" },
-    { name: "Butter Croissant", desc: "Baked in-house, daily", price: "15" },
-  ],
-} as const;
-
 function Index() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Nav */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
-        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Floating Nav */}
+      <header className="fixed top-4 inset-x-0 z-50 px-4 animate-fade-in">
+        <div className="mx-auto max-w-6xl backdrop-blur-md bg-background/70 border border-border/60 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
           <a href="#top" className="font-display text-xl tracking-tight">
             butter<span className="text-accent">.</span>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#menu" className="hover:text-foreground transition-colors">Menu</a>
+            <Link to="/menu" className="hover:text-foreground transition-colors">Menu</Link>
             <a href="#about" className="hover:text-foreground transition-colors">About</a>
             <a href="#visit" className="hover:text-foreground transition-colors">Visit</a>
           </nav>
@@ -56,54 +35,131 @@ function Index() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section id="top" className="relative pt-16">
-        <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24 pb-12 grid md:grid-cols-12 gap-10 items-end">
-          <div className="md:col-span-6">
+      {/* Hero — full viewport */}
+      <section id="top" className="relative min-h-[100svh] flex flex-col">
+        <div className="flex-1 mx-auto w-full max-w-6xl px-6 pt-28 md:pt-32 pb-8 grid md:grid-cols-12 gap-10 items-center">
+          <div className="md:col-span-6 animate-fade-in">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6">
               Specialty Coffee · Al Jubail
             </p>
-            <h1 className="font-display text-6xl md:text-8xl leading-[0.95] text-foreground">
-              Slow<br />
-              coffee,<br />
-              <em className="italic text-accent">buttery</em> soul.
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-foreground">
+              Refined<br />
+              coffee.<br />
+              <em className="italic text-accent">Effortless</em> moments.
             </h1>
             <p className="mt-8 max-w-md text-muted-foreground leading-relaxed">
-              A neighborhood specialty bar in Al Huwailat. We source seasonal
-              beans, dial in every shot, and serve them alongside pastries
-              worth waking up for.
+              A neighborhood specialty spot in Al Huwailat. We pour thoughtfully,
+              serve warmly, and pair every cup with pastries worth waking up for.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <a href="#menu" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors">
+              <Link to="/menu" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 hover:scale-105 transition-all">
                 View Menu
-              </a>
-              <a href="#visit" className="px-6 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary transition-colors">
+              </Link>
+              <a href="#visit" className="px-6 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary hover:scale-105 transition-all">
                 Find Us
               </a>
             </div>
           </div>
-          <div className="md:col-span-6">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
+          <div className="md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
+            <div className="relative aspect-[4/5] max-h-[70vh] mx-auto overflow-hidden rounded-3xl shadow-2xl shadow-black/10">
               <img
                 src={heroImg}
                 alt="Latte with rosetta art on a marble counter at Butter Coffee"
                 width={1600}
                 height={1200}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-[1200ms]"
               />
             </div>
           </div>
         </div>
 
-        <div className="border-y border-border/70 bg-secondary/40">
-          <div className="mx-auto max-w-6xl px-6 py-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            <span>Seasonal Beans</span>
-            <span className="hidden sm:inline">·</span>
-            <span>House Pastries</span>
-            <span className="hidden sm:inline">·</span>
-            <span>Open 6 AM – 12 AM</span>
-            <span className="hidden sm:inline">·</span>
-            <span>Al Huwailat Center</span>
+        {/* Scroll indicator */}
+        <a
+          href="#marquee"
+          aria-label="Scroll down"
+          className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors"
+        >
+          <span>Scroll</span>
+          <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 1v18M1 13l6 6 6-6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+
+        {/* Animated marquee bar */}
+        <div id="marquee" className="border-y border-border/70 bg-secondary/40 overflow-hidden">
+          <div className="flex whitespace-nowrap animate-marquee py-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            {Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="flex items-center shrink-0" aria-hidden={i === 1}>
+                <span className="mx-8">Seasonal Beans</span>
+                <span className="text-accent">✦</span>
+                <span className="mx-8">House Pastries</span>
+                <span className="text-accent">✦</span>
+                <span className="mx-8">Open 6 AM – 12 AM</span>
+                <span className="text-accent">✦</span>
+                <span className="mx-8">Al Huwailat Center</span>
+                <span className="text-accent">✦</span>
+                <span className="mx-8">Slow Crafted</span>
+                <span className="text-accent">✦</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Menu Preview */}
+      <section id="menu" className="py-24 md:py-32 bg-secondary/40 border-b border-border">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 reveal">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">The menu</p>
+              <h2 className="font-display text-5xl md:text-6xl">Today's pour.</h2>
+            </div>
+            <p className="max-w-sm text-sm text-muted-foreground">
+              Prices in SAR · VAT included.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {previewItems.map((it, i) => (
+                <article
+                  key={it.name}
+                  className="group rounded-3xl overflow-hidden bg-card border border-border/60 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-500 reveal"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
+                  <div className="aspect-[5/4] overflow-hidden">
+                    <img
+                      src={it.image}
+                      alt={it.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h3 className="font-display text-xl">{it.name}</h3>
+                      <span className="tabular-nums text-sm font-medium">
+                        {it.price} <span className="text-muted-foreground text-xs">SAR</span>
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* Fade + CTA */}
+            <div className="pointer-events-none absolute inset-x-0 -bottom-4 h-40 bg-gradient-to-b from-transparent to-secondary/40" />
+          </div>
+
+          <div className="mt-12 flex justify-center reveal">
+            <Link
+              to="/menu"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 hover:scale-105 transition-all"
+            >
+              View full menu
+              <span aria-hidden>→</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -111,7 +167,7 @@ function Index() {
       {/* About */}
       <section id="about" className="py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-5">
+          <div className="md:col-span-5 reveal">
             <img
               src={interiorImg}
               alt="Barista pulling a shot inside Butter Coffee"
@@ -121,16 +177,16 @@ function Index() {
               className="rounded-3xl w-full aspect-[4/5] object-cover"
             />
           </div>
-          <div className="md:col-span-7 md:pl-8">
+          <div className="md:col-span-7 md:pl-8 reveal">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Our story</p>
             <h2 className="font-display text-4xl md:text-5xl leading-tight">
-              Small bar,<br />serious coffee.
+              Small spot,<br />serious coffee.
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed max-w-xl">
               Butter started with a simple obsession: coffee that tastes as good
-              as the pastry beside it. We roast in small batches, work with
-              growers we know by name, and treat every cup like it's the only one
-              we'll serve today.
+              as the pastry beside it. Every cup gets our full attention — from
+              the first grind to the final pour — so it lands on your table the
+              way it should.
             </p>
             <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
               <Stat n="6AM" label="Doors open" />
@@ -144,58 +200,16 @@ function Index() {
       {/* Gallery */}
       <section className="pb-24">
         <div className="mx-auto max-w-6xl px-6 grid grid-cols-2 md:grid-cols-3 gap-4">
-          <img src={drinkImg} alt="Iced latte" width={900} height={1100} loading="lazy" className="rounded-2xl aspect-[4/5] object-cover w-full" />
-          <img src={pastryImg} alt="Butter croissants with espresso" width={900} height={1100} loading="lazy" className="rounded-2xl aspect-[4/5] object-cover w-full" />
-          <img src={beansImg} alt="Fresh coffee beans" width={900} height={1100} loading="lazy" className="rounded-2xl aspect-[4/5] object-cover w-full col-span-2 md:col-span-1" />
-        </div>
-      </section>
-
-      {/* Menu */}
-      <section id="menu" className="py-24 md:py-32 bg-secondary/40 border-y border-border">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">The menu</p>
-              <h2 className="font-display text-5xl md:text-6xl">Today's pour.</h2>
-            </div>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              Prices in SAR. Menu rotates with the seasons — ask your barista
-              what's brewing today.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-12">
-            {Object.entries(menu).map(([section, items]) => (
-              <div key={section}>
-                <h3 className="font-display text-2xl mb-6 pb-3 border-b border-border">
-                  {section}
-                </h3>
-                <ul className="space-y-5">
-                  {items.map((it) => (
-                    <li key={it.name} className="flex items-baseline gap-3">
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-baseline gap-2">
-                          <span className="font-medium text-foreground">{it.name}</span>
-                          <span className="flex-1 border-b border-dotted border-border/80 translate-y-[-4px]" />
-                          <span className="tabular-nums text-sm">
-                            {it.price} <span className="text-muted-foreground text-xs">SAR</span>
-                          </span>
-                        </div>
-                        <p className="text-sm text-muted-foreground mt-1">{it.desc}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <img src={drinkImg} alt="Iced latte" width={900} height={1100} loading="lazy" className="reveal rounded-2xl aspect-[4/5] object-cover w-full hover:scale-[1.02] transition-transform duration-500" />
+          <img src={pastryImg} alt="Butter croissants with espresso" width={900} height={1100} loading="lazy" className="reveal rounded-2xl aspect-[4/5] object-cover w-full hover:scale-[1.02] transition-transform duration-500" />
+          <img src={beansImg} alt="Fresh coffee beans" width={900} height={1100} loading="lazy" className="reveal rounded-2xl aspect-[4/5] object-cover w-full col-span-2 md:col-span-1 hover:scale-[1.02] transition-transform duration-500" />
         </div>
       </section>
 
       {/* Visit */}
-      <section id="visit" className="py-24 md:py-32">
+      <section id="visit" className="py-24 md:py-32 bg-secondary/40 border-t border-border">
         <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12">
-          <div>
+          <div className="reveal">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Visit</p>
             <h2 className="font-display text-5xl md:text-6xl leading-none">
               Come by,<br />stay a while.
@@ -212,7 +226,10 @@ function Index() {
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">Hours</dt>
-                <dd className="text-lg">Every day · 6:00 AM – 12:00 AM</dd>
+                <dd className="text-lg leading-relaxed">
+                  Sat – Thu · 6:00 AM – 12:00 AM<br />
+                  Friday · 12:00 PM – 12:00 AM
+                </dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">Follow</dt>
@@ -228,13 +245,13 @@ function Index() {
               href="https://maps.app.goo.gl/Qd6GXNn7d5gmMXXv6"
               target="_blank"
               rel="noreferrer"
-              className="inline-block mt-10 px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+              className="inline-block mt-10 px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 hover:scale-105 transition-all"
             >
               Get directions →
             </a>
           </div>
 
-          <div className="rounded-3xl overflow-hidden border border-border md:min-h-[500px]">
+          <div className="rounded-3xl overflow-hidden border border-border md:min-h-[500px] reveal">
             <iframe
               title="Butter Coffee location map"
               src="https://www.google.com/maps?q=butter+coffee+Al+Huwailat+Al+Jubail&output=embed"
@@ -253,15 +270,46 @@ function Index() {
           <p>© {new Date().getFullYear()} Butter Coffee · Al Jubail, KSA</p>
         </div>
       </footer>
+
+      <RevealScript />
     </div>
   );
 }
 
 function Stat({ n, label }: { n: string; label: string }) {
   return (
-    <div>
+    <div className="reveal">
       <div className="font-display text-3xl">{n}</div>
       <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{label}</div>
     </div>
+  );
+}
+
+// Intersection-observer reveal for .reveal elements
+function RevealScript() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+          (function(){
+            if (typeof window === 'undefined') return;
+            var els = document.querySelectorAll('.reveal');
+            if (!('IntersectionObserver' in window)) {
+              els.forEach(function(e){ e.classList.add('is-visible'); });
+              return;
+            }
+            var io = new IntersectionObserver(function(entries){
+              entries.forEach(function(entry){
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  io.unobserve(entry.target);
+                }
+              });
+            }, { threshold: 0.12 });
+            els.forEach(function(e){ io.observe(e); });
+          })();
+        `,
+      }}
+    />
   );
 }
