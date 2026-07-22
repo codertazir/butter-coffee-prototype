@@ -121,14 +121,14 @@ function Index() {
           </div>
 
           <div className="relative">
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 pb-24">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 pb-24">
               {previewItems.map((it, i) => (
                 <article
                   key={it.name}
-                  className="group rounded-3xl overflow-hidden bg-card border border-border/60 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-500 reveal"
+                  className="group flex sm:block items-center gap-4 rounded-2xl sm:rounded-3xl overflow-hidden bg-card border border-border/60 p-3 sm:p-0 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-500 reveal"
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  <div className="aspect-[5/4] overflow-hidden">
+                  <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden sm:w-full sm:h-auto sm:aspect-[5/4] sm:rounded-none">
                     <img
                       src={it.image}
                       alt={it.name}
@@ -136,18 +136,24 @@ function Index() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3 className="font-display text-xl">{it.name}</h3>
-                      <span className="tabular-nums text-sm font-medium">
+                  <div className="flex-1 min-w-0 sm:p-6 flex sm:block items-center gap-3">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-display text-lg sm:text-xl leading-tight truncate sm:truncate-none">{it.name}</h3>
+                      <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2 sm:line-clamp-none">{it.desc}</p>
+                    </div>
+                    <span className="tabular-nums text-sm font-medium shrink-0 sm:hidden">
+                      {it.price} <span className="text-muted-foreground text-xs">SAR</span>
+                    </span>
+                    <div className="hidden sm:flex items-baseline justify-between gap-3 mt-2">
+                      <span className="tabular-nums text-sm font-medium ml-auto">
                         {it.price} <span className="text-muted-foreground text-xs">SAR</span>
                       </span>
                     </div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
                   </div>
                 </article>
               ))}
             </div>
+
 
             {/* Fade overlay — cards fade into bg */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/80 to-background" />
