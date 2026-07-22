@@ -36,22 +36,22 @@ function Index() {
       </header>
 
       {/* Hero — exact viewport */}
-      <section id="top" className="relative h-svh flex flex-col bg-background">
-        <div className="flex-1 mx-auto w-full max-w-6xl px-6 pt-28 md:pt-32 pb-8 grid md:grid-cols-12 gap-10 items-center">
+      <section id="top" className="relative h-svh min-h-svh overflow-hidden flex flex-col bg-background">
+        <div className="flex-1 min-h-0 mx-auto w-full max-w-6xl px-6 pt-24 md:pt-32 pb-20 md:pb-8 grid md:grid-cols-12 gap-6 md:gap-10 items-center">
           <div className="md:col-span-6 animate-fade-in">
-            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6">
+            <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4 md:mb-6">
               Specialty Coffee · Al Jubail
             </p>
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-foreground">
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] text-foreground">
               Refined<br />
               coffee.<br />
               <em className="italic text-accent">Effortless</em> moments.
             </h1>
-            <p className="mt-8 max-w-md text-muted-foreground leading-relaxed">
+            <p className="mt-5 md:mt-8 max-w-md text-sm md:text-base text-muted-foreground leading-relaxed">
               A neighborhood specialty spot in Al Huwailat. We pour thoughtfully,
               serve warmly, and pair every cup with pastries worth waking up for.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-6 md:mt-10 flex flex-wrap gap-3">
               <Link to="/menu" className="px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 hover:scale-105 transition-all">
                 View Menu
               </Link>
@@ -60,7 +60,7 @@ function Index() {
               </a>
             </div>
           </div>
-          <div className="md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
+          <div className="hidden md:block md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
             <div className="relative aspect-[4/5] max-h-[70vh] mx-auto overflow-hidden rounded-3xl shadow-2xl shadow-black/10">
               <img
                 src={heroImg}
@@ -77,14 +77,15 @@ function Index() {
         <a
           href="#marquee"
           aria-label="Scroll down"
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors"
+          className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 md:gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors z-10"
         >
           <span>Scroll</span>
-          <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="12" height="18" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 1v18M1 13l6 6 6-6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </a>
       </section>
+
 
       {/* Animated marquee bar — outside the hero, uses story bg */}
       <div id="marquee" className="border-y border-border/70 bg-secondary/40 overflow-hidden">
