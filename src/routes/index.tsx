@@ -60,8 +60,8 @@ function Index() {
               </a>
             </div>
           </div>
-          <div className="hidden md:block md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
-            <div className="relative aspect-[4/5] max-h-[70vh] mx-auto overflow-hidden rounded-3xl shadow-2xl shadow-black/10">
+          <div className="md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
+            <div className="relative aspect-[4/5] max-h-[38vh] md:max-h-[70vh] w-3/5 md:w-full mx-auto overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl shadow-black/10">
               <img
                 src={heroImg}
                 alt="Latte with rosetta art on a marble counter at Butter Coffee"
