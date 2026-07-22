@@ -324,7 +324,7 @@ function RevealScript() {
                   io.unobserve(entry.target);
                 }
               });
-            }, { threshold: 0.12 });
+            }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
             els.forEach(function(e){ io.observe(e); });
           })();
         `,
