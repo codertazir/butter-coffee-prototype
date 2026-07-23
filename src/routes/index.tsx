@@ -93,7 +93,7 @@ function Index() {
 
       {/* Animated marquee bar — outside the hero, uses story bg */}
       <div id="marquee" className="border-y border-border/70 bg-secondary/40 overflow-hidden">
-        <div className="flex whitespace-nowrap animate-marquee py-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+        <div className="flex whitespace-nowrap animate-marquee [animation-duration:18s] md:[animation-duration:32s] py-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center shrink-0" aria-hidden={i === 1}>
               <span className="mx-8">Seasonal Beans</span>
