@@ -20,7 +20,7 @@ function MenuPage() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Floating Nav */}
       <header className="fixed top-4 inset-x-0 z-50 px-4 animate-fade-in">
-        <div className="mx-auto max-w-6xl backdrop-blur-2xl backdrop-saturate-200 bg-background/40 supports-[backdrop-filter]:bg-background/25 border border-white/30 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
+        <div className="mx-auto max-w-6xl backdrop-blur-3xl backdrop-saturate-125 bg-background/15 border border-white/20 shadow-lg shadow-black/5 rounded-full px-6 h-14 flex items-center justify-between">
           <Link to="/" className="font-display text-xl tracking-tight">
             butter<span className="text-accent">.</span>
           </Link>
