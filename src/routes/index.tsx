@@ -34,7 +34,7 @@ const branches: { name: string; address: string; map: string; hours: string }[] 
     name: "Al Hijaz",
     address: "Al Hijaz, Al Jubail 35814, Saudi Arabia",
     map: "https://maps.app.goo.gl/t1JnQ6Y4Km49bMNNA",
-    hours: "Sat – Thu · 6:00 AM – 12:00 AM\nFriday · 12:00 PM – 12:00 AM",
+    hours: "Open 24 hours",
   },
 ];
 
