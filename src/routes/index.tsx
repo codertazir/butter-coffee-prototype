@@ -11,7 +11,31 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const branches: { name: string; address: string; map: string }[] = [
+  {
+    name: "Al Huwailat",
+    address: "Al Huwailat, Al Jubail 13100, Saudi Arabia",
+    map: "https://maps.app.goo.gl/MvreXU73wnz5pVbV6",
+  },
+  {
+    name: "Al Farouq",
+    address: "Al Farouq, Al Jubail 35816, Saudi Arabia",
+    map: "https://maps.app.goo.gl/77CnqnmLztm9f6pt8",
+  },
+  {
+    name: "Industrial Area",
+    address: "First Industrial Area, Al Jubail 31961, Saudi Arabia",
+    map: "https://maps.app.goo.gl/TxXizgsEEHCiqQL19",
+  },
+  {
+    name: "Al Hijaz",
+    address: "Al Hijaz, Al Jubail 35814, Saudi Arabia",
+    map: "https://maps.app.goo.gl/t1JnQ6Y4Km49bMNNA",
+  },
+];
+
 function Index() {
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Floating Nav */}
@@ -62,7 +86,7 @@ function Index() {
             </div>
           </div>
           <div className="md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
-            <div className="relative aspect-[4/5] max-h-[38vh] md:max-h-[70vh] w-3/5 md:w-full mx-auto overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl shadow-black/10">
+            <div className="relative aspect-[4/5] max-h-[46vh] md:max-h-[70vh] w-4/5 sm:w-3/5 md:w-full mx-auto overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl shadow-black/10">
               <img
                 src={heroImg}
                 alt="Latte with rosetta art on a marble counter at Butter Coffee"
@@ -75,22 +99,25 @@ function Index() {
         </div>
 
         {/* Scroll indicator */}
-        <a
-          href="#marquee"
-          aria-label="Scroll down"
-          className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 md:gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors z-10"
-        >
-          <span>Scroll</span>
-          <svg width="12" height="18" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 1v18M1 13l6 6 6-6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
+        <div className="absolute bottom-4 md:bottom-6 inset-x-0 flex justify-center z-10 pointer-events-none">
+          <a
+            href="#marquee"
+            aria-label="Scroll down"
+            className="pointer-events-auto flex flex-col items-center gap-1.5 md:gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors"
+          >
+            <span>Scroll</span>
+            <svg width="12" height="18" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 1v18M1 13l6 6 6-6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
       </section>
+
 
 
       {/* Animated marquee bar — outside the hero, uses story bg */}
       <div id="marquee" className="border-y border-border/70 bg-secondary/40 overflow-hidden">
-        <div className="flex whitespace-nowrap animate-marquee py-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+        <div className="flex whitespace-nowrap animate-marquee [animation-duration:18s] md:[animation-duration:32s] py-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center shrink-0" aria-hidden={i === 1}>
               <span className="mx-8">Seasonal Beans</span>
@@ -210,7 +237,7 @@ function Index() {
             </p>
             <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
               <Stat n="6AM" label="Doors open" />
-              <Stat n="04" label="Origins" />
+              <Stat n="04" label="Branches" />
               <Stat n="4.3★" label="On Google" />
             </div>
           </div>
@@ -228,60 +255,64 @@ function Index() {
 
       {/* Visit — hero bg */}
       <section id="visit" className="py-24 md:py-32 bg-background">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12">
-          <div className="reveal">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="max-w-2xl reveal">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Visit</p>
             <h2 className="font-display text-5xl md:text-6xl leading-none">
               Come by,<br />stay a while.
             </h2>
-
-            <dl className="mt-12 space-y-8">
-              <div>
-                <dt className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">Address</dt>
-                <dd className="text-lg">
-                  Al Huwailat Center<br />
-                  Al Huwailat, Al Jubail 35718<br />
-                  Saudi Arabia
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">Hours</dt>
-                <dd className="text-lg leading-relaxed">
-                  Sat – Thu · 6:00 AM – 12:00 AM<br />
-                  Friday · 12:00 PM – 12:00 AM
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">Follow</dt>
-                <dd className="text-lg">
-                  <a href="https://www.instagram.com/butter.speciality" target="_blank" rel="noreferrer" className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent transition-colors">
-                    @butter.speciality
-                  </a>
-                </dd>
-              </div>
-            </dl>
-
-            <a
-              href="https://maps.app.goo.gl/Qd6GXNn7d5gmMXXv6"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-block mt-10 px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 hover:scale-105 transition-all"
-            >
-              Get directions →
-            </a>
+            <p className="mt-6 text-muted-foreground leading-relaxed">
+              Four branches across Al Jubail. Same craft, same warmth — pick the one closest to you.
+            </p>
+            <div className="mt-6 text-sm">
+              <span className="text-muted-foreground">Follow · </span>
+              <a href="https://www.instagram.com/butter.speciality" target="_blank" rel="noreferrer" className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent transition-colors">
+                @butter.speciality
+              </a>
+            </div>
           </div>
 
-          <div className="rounded-3xl overflow-hidden border border-border md:min-h-[500px] reveal">
-            <iframe
-              title="Butter Coffee location map"
-              src="https://www.google.com/maps?q=butter+coffee+Al+Huwailat+Al+Jubail&output=embed"
-              className="w-full h-full min-h-[400px] border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {branches.map((b, i) => (
+              <article
+                key={b.name}
+                className="reveal group rounded-3xl border border-border/60 bg-card p-6 md:p-8 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-500 flex flex-col"
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="font-display text-2xl md:text-3xl">{b.name}</h3>
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    Branch {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <dl className="mt-6 space-y-5 text-sm flex-1">
+                  <div>
+                    <dt className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-1.5">Address</dt>
+                    <dd className="leading-relaxed">{b.address}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-1.5">Hours</dt>
+                    <dd className="leading-relaxed">
+                      Sat – Thu · 6:00 AM – 12:00 AM<br />
+                      Friday · 12:00 PM – 12:00 AM
+                    </dd>
+                  </div>
+                </dl>
+                <a
+                  href={b.map}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-xs font-medium hover:bg-primary/90 hover:scale-105 transition-all"
+                >
+                  Get directions
+                  <span aria-hidden>→</span>
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>
+
 
       {/* Footer — bar bg */}
       <footer className="border-t border-border py-12 bg-secondary/40">
