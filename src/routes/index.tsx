@@ -11,7 +11,31 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const branches: { name: string; address: string; map: string }[] = [
+  {
+    name: "Al Huwailat",
+    address: "Al Huwailat, Al Jubail 13100, Saudi Arabia",
+    map: "https://maps.app.goo.gl/MvreXU73wnz5pVbV6",
+  },
+  {
+    name: "Al Farouq",
+    address: "Al Farouq, Al Jubail 35816, Saudi Arabia",
+    map: "https://maps.app.goo.gl/77CnqnmLztm9f6pt8",
+  },
+  {
+    name: "Industrial Area",
+    address: "First Industrial Area, Al Jubail 31961, Saudi Arabia",
+    map: "https://maps.app.goo.gl/TxXizgsEEHCiqQL19",
+  },
+  {
+    name: "Al Hijaz",
+    address: "Al Hijaz, Al Jubail 35814, Saudi Arabia",
+    map: "https://maps.app.goo.gl/t1JnQ6Y4Km49bMNNA",
+  },
+];
+
 function Index() {
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Floating Nav */}
