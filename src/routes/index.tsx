@@ -296,9 +296,8 @@ function Index() {
                   </div>
                   <div>
                     <dt className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-1.5">Hours</dt>
-                    <dd className="leading-relaxed">
-                      Sat – Thu · 6:00 AM – 12:00 AM<br />
-                      Friday · 12:00 PM – 12:00 AM
+                    <dd className="leading-relaxed whitespace-pre-line">
+                      {b.hours}
                     </dd>
                   </div>
                 </dl>
