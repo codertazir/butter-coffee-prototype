@@ -11,26 +11,30 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const branches: { name: string; address: string; map: string }[] = [
+const branches: { name: string; address: string; map: string; hours: string }[] = [
   {
     name: "Al Huwailat",
     address: "Al Huwailat, Al Jubail 13100, Saudi Arabia",
     map: "https://maps.app.goo.gl/MvreXU73wnz5pVbV6",
+    hours: "Sat – Thu · 6:00 AM – 12:00 AM\nFriday · 12:00 PM – 12:00 AM",
   },
   {
     name: "Al Farouq",
     address: "Al Farouq, Al Jubail 35816, Saudi Arabia",
     map: "https://maps.app.goo.gl/77CnqnmLztm9f6pt8",
+    hours: "Open 24 hours",
   },
   {
     name: "Industrial Area",
     address: "First Industrial Area, Al Jubail 31961, Saudi Arabia",
     map: "https://maps.app.goo.gl/TxXizgsEEHCiqQL19",
+    hours: "Open 24 hours",
   },
   {
     name: "Al Hijaz",
     address: "Al Hijaz, Al Jubail 35814, Saudi Arabia",
     map: "https://maps.app.goo.gl/t1JnQ6Y4Km49bMNNA",
+    hours: "Sat – Thu · 6:00 AM – 12:00 AM\nFriday · 12:00 PM – 12:00 AM",
   },
 ];
 
