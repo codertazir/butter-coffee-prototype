@@ -213,7 +213,7 @@ function Index() {
             </p>
             <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
               <Stat n="6AM" label="Doors open" />
-              <Stat n="04" label="Origins" />
+              <Stat n="04" label="Branches" />
               <Stat n="4.3★" label="On Google" />
             </div>
           </div>
