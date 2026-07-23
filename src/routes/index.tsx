@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
 import heroImg from "@/assets/hero.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import drinkImg from "@/assets/drink-1.jpg";
@@ -306,29 +307,25 @@ function Stat({ n, label }: { n: string; label: string }) {
 
 // Intersection-observer reveal for .reveal elements
 function RevealScript() {
-  return (
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `
-          (function(){
-            if (typeof window === 'undefined') return;
-            var els = document.querySelectorAll('.reveal');
-            if (!('IntersectionObserver' in window)) {
-              els.forEach(function(e){ e.classList.add('is-visible'); });
-              return;
-            }
-            var io = new IntersectionObserver(function(entries){
-              entries.forEach(function(entry){
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('is-visible');
-                  io.unobserve(entry.target);
-                }
-              });
-            }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
-            els.forEach(function(e){ io.observe(e); });
-          })();
-        `,
-      }}
-    />
-  );
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((e) => e.classList.add("is-visible"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0, rootMargin: "0px 0px -5% 0px" },
+    );
+    els.forEach((e) => io.observe(e));
+    return () => io.disconnect();
+  }, []);
+  return null;
 }
