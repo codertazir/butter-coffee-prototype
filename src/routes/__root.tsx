@@ -77,10 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Butter Coffee — Specialty Coffee in Al Jubail" },
+      { title: "Butter Coffee" },
       { name: "description", content: "Butter Coffee is a specialty coffee shop in Al Huwailat, Al Jubail. Slow-crafted espresso, seasonal drinks, and buttery pastries." },
       { name: "author", content: "Butter Coffee" },
-      { property: "og:title", content: "Butter Coffee — Specialty Coffee in Al Jubail" },
+      { property: "og:title", content: "Butter Coffee" },
       { property: "og:description", content: "Slow-crafted espresso, seasonal drinks, and buttery pastries in Al Huwailat." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
