@@ -231,60 +231,64 @@ function Index() {
 
       {/* Visit — hero bg */}
       <section id="visit" className="py-24 md:py-32 bg-background">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12">
-          <div className="reveal">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="max-w-2xl reveal">
             <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Visit</p>
             <h2 className="font-display text-5xl md:text-6xl leading-none">
               Come by,<br />stay a while.
             </h2>
-
-            <dl className="mt-12 space-y-8">
-              <div>
-                <dt className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">Address</dt>
-                <dd className="text-lg">
-                  Al Huwailat Center<br />
-                  Al Huwailat, Al Jubail 35718<br />
-                  Saudi Arabia
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">Hours</dt>
-                <dd className="text-lg leading-relaxed">
-                  Sat – Thu · 6:00 AM – 12:00 AM<br />
-                  Friday · 12:00 PM – 12:00 AM
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-2">Follow</dt>
-                <dd className="text-lg">
-                  <a href="https://www.instagram.com/butter.speciality" target="_blank" rel="noreferrer" className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent transition-colors">
-                    @butter.speciality
-                  </a>
-                </dd>
-              </div>
-            </dl>
-
-            <a
-              href="https://maps.app.goo.gl/Qd6GXNn7d5gmMXXv6"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-block mt-10 px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 hover:scale-105 transition-all"
-            >
-              Get directions →
-            </a>
+            <p className="mt-6 text-muted-foreground leading-relaxed">
+              Four branches across Al Jubail. Same craft, same warmth — pick the one closest to you.
+            </p>
+            <div className="mt-6 text-sm">
+              <span className="text-muted-foreground">Follow · </span>
+              <a href="https://www.instagram.com/butter.speciality" target="_blank" rel="noreferrer" className="underline decoration-accent decoration-2 underline-offset-4 hover:text-accent transition-colors">
+                @butter.speciality
+              </a>
+            </div>
           </div>
 
-          <div className="rounded-3xl overflow-hidden border border-border md:min-h-[500px] reveal">
-            <iframe
-              title="Butter Coffee location map"
-              src="https://www.google.com/maps?q=butter+coffee+Al+Huwailat+Al+Jubail&output=embed"
-              className="w-full h-full min-h-[400px] border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {branches.map((b, i) => (
+              <article
+                key={b.name}
+                className="reveal group rounded-3xl border border-border/60 bg-card p-6 md:p-8 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all duration-500 flex flex-col"
+                style={{ transitionDelay: `${i * 80}ms` }}
+              >
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="font-display text-2xl md:text-3xl">{b.name}</h3>
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    Branch {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <dl className="mt-6 space-y-5 text-sm flex-1">
+                  <div>
+                    <dt className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-1.5">Address</dt>
+                    <dd className="leading-relaxed">{b.address}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground mb-1.5">Hours</dt>
+                    <dd className="leading-relaxed">
+                      Sat – Thu · 6:00 AM – 12:00 AM<br />
+                      Friday · 12:00 PM – 12:00 AM
+                    </dd>
+                  </div>
+                </dl>
+                <a
+                  href={b.map}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-xs font-medium hover:bg-primary/90 hover:scale-105 transition-all"
+                >
+                  Get directions
+                  <span aria-hidden>→</span>
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>
+
 
       {/* Footer — bar bg */}
       <footer className="border-t border-border py-12 bg-secondary/40">
