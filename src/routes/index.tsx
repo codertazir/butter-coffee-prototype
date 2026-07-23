@@ -62,7 +62,7 @@ function Index() {
             </div>
           </div>
           <div className="md:col-span-6 animate-fade-in" style={{ animationDelay: "150ms" }}>
-            <div className="relative aspect-[4/5] max-h-[38vh] md:max-h-[70vh] w-3/5 md:w-full mx-auto overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl shadow-black/10">
+            <div className="relative aspect-[4/5] max-h-[46vh] md:max-h-[70vh] w-4/5 sm:w-3/5 md:w-full mx-auto overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl shadow-black/10">
               <img
                 src={heroImg}
                 alt="Latte with rosetta art on a marble counter at Butter Coffee"
@@ -75,17 +75,20 @@ function Index() {
         </div>
 
         {/* Scroll indicator */}
-        <a
-          href="#marquee"
-          aria-label="Scroll down"
-          className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 md:gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors z-10"
-        >
-          <span>Scroll</span>
-          <svg width="12" height="18" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 1v18M1 13l6 6 6-6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
+        <div className="absolute bottom-4 md:bottom-6 inset-x-0 flex justify-center z-10 pointer-events-none">
+          <a
+            href="#marquee"
+            aria-label="Scroll down"
+            className="pointer-events-auto flex flex-col items-center gap-1.5 md:gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground animate-bounce-slow hover:text-foreground transition-colors"
+          >
+            <span>Scroll</span>
+            <svg width="12" height="18" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 1v18M1 13l6 6 6-6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
       </section>
+
 
 
       {/* Animated marquee bar — outside the hero, uses story bg */}
